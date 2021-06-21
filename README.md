@@ -1,4 +1,4 @@
-# Scalable UShapelet Implementation in Python
+# Scalable UShapelets for Time Series Clustering Implementation in Python
 
 ### References:
 
