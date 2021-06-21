@@ -39,19 +39,6 @@ def SortUshapelets(data, sLen):
             rowsToDelete[i] = 0
     
     SAX_shapelets_TS = SAX_shapelets_TS[np.where(rowsToDelete==1)] 
-    #SAX_shapelets_TS = SAX_shapelets_TS[np.concatenate(np.argwhere(rowsToDelete==1))]
-
-    '''
-    rowsToDelete = np.zeros((sNum), dtype=np.int32)
-
-    for i in range(sNum):
-        if (len(np.argwhere((SAX_shapelets_TS[i, 3:] > ub) | (SAX_shapelets_TS[i, 3:] < lb))) > hashesTotal*0.5):
-            rowsToDelete[i] = 1
-
-    print(SAX_shapelets_TS.shape)
-    SAX_shapelets_TS = np.delete(SAX_shapelets_TS, rowsToDelete, axis=0) 
-    print(SAX_shapelets_TS.shape)
-    '''
 
     stds = np.std(SAX_shapelets_TS[:, 3:], ddof=1, axis=1)
     uShapeletsOrder = np.argsort(stds)
@@ -64,7 +51,6 @@ def SortUshapelets(data, sLen):
         SAX_shapelets_TS = SAX_shapelets_TS[uShapeletsOrder, :]
 
     otherInd = np.argwhere(rowsToDelete==0)
-    #otherInd = np.argwhere(rowsToDelete) 
     otherInd = otherInd[np.random.permutation(len(otherInd))]
     otherInd = np.concatenate(otherInd)
     SAX_shapelets_TS = np.concatenate((SAX_shapelets_TS, SAX_shapelets_TS_backup[otherInd]), axis=0)
