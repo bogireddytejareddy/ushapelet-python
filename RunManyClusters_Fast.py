@@ -62,7 +62,5 @@ while (len(remainingInd) > 3):
     remainingInd = np.delete(remainingInd, np.concatenate(indToDelete), axis=0) 
     currentClusterNum = currentClusterNum + 1
 
-print(allClassLabels)
-print(labelsResult[:, 0])
 resultRI = metrics.rand_score(allClassLabels, labelsResult[:, 0])
 print('RI', resultRI)    
